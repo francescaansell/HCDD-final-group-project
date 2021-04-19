@@ -1,67 +1,63 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  SafeAreaView,
+import React, { useState, useCallback, useEffect } from 'react'
+import { GiftedChat } from 'react-native-gifted-chat'
  
-} from 'react-native';
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-//import ChatBot from 'react-native-chatbot';
-//https://www.npmjs.com/package/react-native-gifted-chat/v/next ???
-export default function App({ navigation }) {
-  const steps = [
-    {
-      id: '0',
-      message: 'Welcome to react chatbot!',
-      trigger: '1',
-    },
-    {
-      id: '1',
-      message: 'Bye!',
-      end: true,
-    },
-  ];
-
-  const [name, setName ] = useState("");
-
-  const readName = async () => {
-    try {
-      const storage_name = await AsyncStorage.getItem('name');
-      if (storage_name !== null) {
-        setNameFromStorage(storage_name);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  const setNameFromStorage = (name_string) => {
-    setName(JSON.parse(name_string));
-  }
-
+export default function Example() {
+  const [messages, setMessages] = useState([]);
+ 
   useEffect(() => {
-    readName();
+    setMessages([
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        }, 
+      }, 
+      {
+          _id: 1,
+          text: 'How are you today',
+          createdAt: new Date(),
+          quickReplies: {
+            type: 'radio', // or 'checkbox',
+            keepIt: true,
+            values: [
+              {
+                title: '😋 Yes',
+                value: 'yes',
+              },
+              {
+                title: '📷 Yes, let me show you with a picture!',
+                value: 'yes_picture',
+              },
+              {
+                title: '😞 Nope. What?',
+                value: 'no',
+              },
+            ],
+          },
+          user: {
+            _id: 2,
+            name: 'React Native',
+            avatar: 'https://placeimg.com/140/140/any',
+        }
+      },
+    ])
   }, [])
-
-  
+ 
+  const onSend = useCallback((messages = []) => {
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+  }, [])
+ 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Chatbot</Text>
-      <Text>Name: {name}</Text>
-      { /* <ChatBot steps={steps} /> **/}
-    </SafeAreaView>
-  );
+    <GiftedChat
+      messages={messages}
+      onSend={messages => onSend(messages)}
+      user={{
+        _id: 1,
+      }}
+    />
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  
-});
