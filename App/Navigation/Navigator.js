@@ -34,6 +34,13 @@ export default function Navigator() {
         
         
       })}
+      tabBarOptions={{
+        labelStyle: { fontSize: 20 },
+        activeTintColor: '#084887',
+        inactiveTintColor: 'grey',
+        
+  
+      }}
       >
         <Tab.Screen
           name="Home"
