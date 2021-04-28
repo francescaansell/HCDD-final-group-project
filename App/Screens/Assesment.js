@@ -1,11 +1,12 @@
 import React, {useState,} from 'react';
-import {Text, View, StyleSheet, SafeAreaView, Button,} from 'react-native';
+import {Text, View, StyleSheet, SafeAreaView, Button, ScrollView} from 'react-native';
 import {TextBox, EmailInput, DateTime, Telephone, DropDown, Option, Form, OptionGroup, } from "react-form-elements";
 
 
 export default function App({ navigation }) {
   return (
   <SafeAreaView>
+    <ScrollView>
     <View>
       <Text style = {styles.header}>This assessment provides questions about events that may be stressful, 
       harmful, or disturbing for almost everyone. Answer truthfully and to the best of your ability. This
@@ -116,6 +117,7 @@ export default function App({ navigation }) {
 
     </View>
     </Form>
+    </ScrollView>
   </SafeAreaView>
   );
 }
