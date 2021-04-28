@@ -1,8 +1,13 @@
 import React, {useState,} from 'react';
-import {Text, View, StyleSheet, SafeAreaView, Form, Button,} from 'react-native';
-import {TextBox, EmailInput, DateTime, Telephone, DropDown, Option, OptionGroup, } from "react-form-elements";
+import {Text, View, StyleSheet, SafeAreaView, Button,} from 'react-native';
+import {TextBox, EmailInput, DateTime, Telephone, DropDown, Option, Form, OptionGroup, } from "react-form-elements";
+
 
 export default function App({ navigation }) {
+
+  const handleSumbit = () => {
+    console.log("submit");
+  }
   return (
   <SafeAreaView>
     <View>
@@ -11,6 +16,10 @@ export default function App({ navigation }) {
       assessment can be retaken at any time. Please answer each question in order of presentation.</Text>
     </View>
 
+    <Form 
+      onSubmit= {() => alert("You have submitted the form")}
+      name = "Assesment"
+      >
     <View style = {styles.dropDown}>
       
       <View style= {styles.subText}>
@@ -103,14 +112,14 @@ export default function App({ navigation }) {
       </OptionGroup>
       </DropDown>
     
-      <Button style = {styles.button} title = "Submit"/>
+      <Button style = {styles.button} title = "Submit" onClick={()=> handleSumbit()}/>
 
       <View style={styles.bottomText}>
         <Text>Assessment questions sourced from: https://www.ptsd.va.gov/professional/assessment/documents/BTQ.pdf.</Text>
       </View>
 
     </View>
-    
+    </Form>
   </SafeAreaView>
   );
 }
@@ -123,7 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    alignItems: 'top',
+    // alignItems: 'top',
     justifyContent: 'center',
     justifyContent: 'flex-start',
     margin: 20, 
@@ -131,28 +140,29 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   subText: {
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
     fontSize: 15,
     padding: 10,
   },
   dropDown: {
     flex: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
   bottomText: {
     flex: 1,
-    alignItems: 'bottom',
+    // alignItems: 'bottom',
     justifyContent: 'center',
     fontSize: 15,
     padding: 10,
   },
   button: {
     flex: 1,
-    alignItem: 'center',
+    // alignItem: 'center',
     justifyContent: 'center',
     paddingTop: 10,
+    marginTop: 5, 
   },
 });
 
