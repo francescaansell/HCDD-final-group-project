@@ -6,10 +6,10 @@ Francesca Ansell, Taylor Bracone, Jarrod Padilla
 
 Be sure you have npm and expo-cli installed. 
 
-To make sure you have expo-cli installed run 
+* To make sure you have expo-cli installed run 
 ```expo --version```
 
-To make sure you have node npm installed run 
+* To make sure you have node npm installed run 
 ``` node -v ``` and 
 ``` npm -v ```
 
