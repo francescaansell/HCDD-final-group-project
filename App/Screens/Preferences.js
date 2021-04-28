@@ -12,9 +12,9 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App({ navigation }) {
-  const [name, setName] = useState('Name');
-  const [text, setText] = useState('');
+  const [name, setName] = useState('');
   const [age, setAge] = useState('');
+  const [email, setEmail] = useState('');
 
   const setNameFromStorage = (name_string) => {
     setName(JSON.parse(name_string));
@@ -40,8 +40,58 @@ export default function App({ navigation }) {
     }
   };
 
+  const setAgeFromStorage = (age_string) => {
+    setAge(JSON.parse(age_string));
+  };
+
+  const storeAge = async (newValue) => {
+    try {
+      await AsyncStorage.setItem('age', JSON.stringify(newValue));
+      setAge(newValue);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const readAge = async () => {
+    try {
+      const storage_age = await AsyncStorage.getItem('age');
+      if (storage_age !== null) {
+        setAgeFromStorage(storage_age);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const setEmailFromStorage = (email_string) => {
+    setEmail(JSON.parse(email_string));
+  };
+
+  const storeEmail = async (newValue) => {
+    try {
+      await AsyncStorage.setItem('email', JSON.stringify(newValue));
+      setEmail(newValue);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const readEmail = async () => {
+    try {
+      const storage_email = await AsyncStorage.getItem('email');
+      if (storage_email !== null) {
+        setEmailFromStorage(storage_email);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
-    readName();
+  readName();
+  readAge();
+   readEmail();
   });
 
   return (
@@ -56,15 +106,15 @@ export default function App({ navigation }) {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.textinput}
-              onChangeText={(text) => setText(text)}
-              value={text}
-              onSubmitEditing={() => storeName(text)}
-              placeholder={name}
+              onChangeText={(name) => setName(name)}
+              value={name}
+              onSubmitEditing={() => storeName(name)}
+              placeholder='e.x John Smith'
             />
           </View>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => storeName(text)}>
+            onPress={() => storeName(name)}>
             <Text style={styles.text}>Update</Text>
           </TouchableOpacity>
         </View>
@@ -76,12 +126,12 @@ export default function App({ navigation }) {
               onChangeText={(age) => setAge(age)}
               value={age}
               placeholder = 'e.x 54' //temp example value
-              //placeholder={age}
+              onSubmitEditing={()=> storeAge(age)}
             />
           </View>
           <TouchableOpacity
             style={styles.button}
-            //add onPress for setting age
+            onPress={() => storeAge(age)}
           >
             <Text style={styles.text}>Update</Text>
           </TouchableOpacity>
@@ -91,16 +141,15 @@ export default function App({ navigation }) {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.textinput}
-              /*
               onChangeText={(email) => setEmail(email)}
               value={email}
-              placeholder={email}*/
               placeholder='exampleEamil@email.com'
+
             />
           </View>
           <TouchableOpacity
             style={styles.button}
-            //add onPress for setting email
+            onPress={() => storeEmail(email)}
           >
             <Text style={styles.text}>Update</Text>
           </TouchableOpacity>
