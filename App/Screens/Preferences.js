@@ -12,7 +12,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App({ navigation }) {
-  const [name, setName] = useState('Name');
+  const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [email, setEmail] = useState('');
 
@@ -55,7 +55,7 @@ export default function App({ navigation }) {
 
   const readAge = async () => {
     try {
-      const storage_name = await AsyncStorage.getItem('age');
+      const storage_age = await AsyncStorage.getItem('age');
       if (storage_age !== null) {
         setAgeFromStorage(storage_age);
       }
@@ -79,9 +79,9 @@ export default function App({ navigation }) {
 
   const readEmail = async () => {
     try {
-      const storage_name = await AsyncStorage.getItem('email');
-      if (storage_name !== null) {
-        setNameFromStorage(storage_email);
+      const storage_email = await AsyncStorage.getItem('email');
+      if (storage_email !== null) {
+        setEmailFromStorage(storage_email);
       }
     } catch (e) {
       console.error(e);
@@ -89,9 +89,9 @@ export default function App({ navigation }) {
   };
 
   useEffect(() => {
-    readName();
-    readAge();
-    readEmail();
+  readName();
+  readAge();
+   readEmail();
   });
 
   return (
@@ -109,12 +109,12 @@ export default function App({ navigation }) {
               onChangeText={(name) => setName(name)}
               value={name}
               onSubmitEditing={() => storeName(name)}
-              placeholder={name}
+              placeholder='e.x John Smith'
             />
           </View>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => storeName(text)}>
+            onPress={() => storeName(name)}>
             <Text style={styles.text}>Update</Text>
           </TouchableOpacity>
         </View>
