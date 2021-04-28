@@ -4,10 +4,6 @@ import {TextBox, EmailInput, DateTime, Telephone, DropDown, Option, Form, Option
 
 
 export default function App({ navigation }) {
-
-  const handleSumbit = () => {
-    console.log("submit");
-  }
   return (
   <SafeAreaView>
     <View>
@@ -112,7 +108,7 @@ export default function App({ navigation }) {
       </OptionGroup>
       </DropDown>
     
-      <Button style = {styles.button} title = "Submit" onClick={()=> handleSumbit()}/>
+      <Button style = {styles.button} title = "Submit"/>
 
       <View style={styles.bottomText}>
         <Text>Assessment questions sourced from: https://www.ptsd.va.gov/professional/assessment/documents/BTQ.pdf.</Text>

@@ -1,22 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import ChatBot from 'react-simple-chatbot';
-import { ThemeProvider } from 'styled-components';
+
  
 export default function Example() {
-
-  const theme = {
-    background: '#f5f8fb',
-    fontFamily: 'Georgia',
-    headerBgColor: '#008080',
-    headerFontColor: '#fff',
-    headerFontSize: '15px',
-    botBubbleColor: '#f58A07',
-    botFontColor: '#fff',
-    userBubbleColor: '#fff',
-    userFontColor: '#4a4a4a',
-  };
-
- 
   const steps= [
     {
       id: 'welcome',
@@ -516,11 +502,11 @@ export default function Example() {
 
  
   return (
-    <ThemeProvider theme={theme}>
+   
     <ChatBot
       steps = {steps}
      
     />
-    </ThemeProvider>
+ 
   )
 }
