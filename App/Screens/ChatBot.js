@@ -15,7 +15,7 @@ export default function Example() {
     userBubbleColor: '#fff',
     userFontColor: '#4a4a4a',
   };
- 
+
  
   const steps= [
     {
