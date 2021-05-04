@@ -8,7 +8,7 @@ import Resources from '../Screens/Resources';
 import ChatBot from '../Screens/ChatBot';
 import Preferences from '../Screens/Preferences';
 import ExternalLinks from '../Screens/ExternalLinks';
-import Assesment from '../Screens/Assesment';
+import Assessment from '../Screens/Assessment';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {createStackNavigator } from '@react-navigation/stack'
 import { Ionicons } from '@expo/vector-icons';
@@ -70,8 +70,8 @@ function ResourcesStack () {
         component={Preferences}
       />
       <Stack.Screen 
-        name = "Assesment"
-        component = {Assesment}
+        name = "Assessment"
+        component = {Assessment}
       />
       <Stack.Screen
         name = "External Links"

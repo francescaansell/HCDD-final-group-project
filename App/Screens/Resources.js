@@ -26,8 +26,8 @@ export default function App({ navigation, route }) {
         <Ionicons name="reader-outline" size={64} color={'black'} />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Assesment')}>
-          <Text style={styles.text}>Go to Assesment</Text>
+          onPress={() => navigation.navigate('Assessment')}>
+          <Text style={styles.text}>Go to Assessment</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.links}>
