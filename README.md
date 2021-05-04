@@ -13,7 +13,7 @@ Be sure you have npm and expo-cli installed.
 ``` node -v ``` and 
 ``` npm -v ```
 
-Then Run ```npm install``` inside the cloned file directory to install necessary dependencies.
+Then Run ```npm install``` inside the local file directory to install necessary dependencies.
 
 # Usage
 
